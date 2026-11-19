@@ -51,70 +51,34 @@ em,.it{font-family:var(--serif);font-style:italic;font-weight:400}
 .pill:hover .arr{transform:translate(2px,-2px)}
 
 /* ---------- HERO ---------- */
-.hero{padding-top:84px;position:relative;overflow-x:clip}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.hero-top{display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:13px;color:var(--muted);padding-top:14px;opacity:0;animation:fade .9s .9s var(--ease) forwards}
-.avail{display:inline-flex;align-items:center;gap:10px}
+.hero{padding-top:130px;padding-bottom:40px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(30px,5vw,80px);align-items:end}
+.avail{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin-bottom:34px}
 .dot{width:8px;height:8px;border-radius:50%;background:#6E8B3D;box-shadow:0 0 0 0 rgba(110,139,61,.6);animation:pulse 2.4s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(110,139,61,0)}100%{box-shadow:0 0 0 0 rgba(110,139,61,0)}}
-.vol{display:flex;gap:16px;align-items:center}
-.vol i{width:46px;height:1px;background:currentColor;opacity:.45}
-@keyframes fade{to{opacity:1}}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,7.6vw,118px);line-height:.94;letter-spacing:-.025em}
+h1 .it{color:var(--walnut)}
+h1 .line{display:block;overflow:hidden;padding-bottom:.06em}
+h1 .line>span{display:inline-block;transform:translateY(105%);animation:rise 1.1s var(--ease) forwards}
+h1 .line:nth-child(2)>span{animation-delay:.08s}
+h1 .line:nth-child(3)>span{animation-delay:.16s}
 @keyframes rise{to{transform:none}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes draw{to{stroke-dashoffset:0}}
+.hero-sub{display:flex;gap:44px;margin-top:44px;align-items:flex-start;flex-wrap:wrap}
+.hero-sub p{max-width:380px;color:#4A4239;font-size:16.5px}
+.hero-sub .meta{display:grid;gap:6px;font-size:13.5px}
+.hero-sub .meta b{font-weight:500}
 
-/* stage: name | arch | name */
-.stage{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-top:clamp(8px,2.4vh,30px)}
-.sketch{position:absolute;left:50%;top:50%;width:min(860px,68vw);transform:translate(-50%,-50%);z-index:0;pointer-events:none;overflow:visible}
-.sketch path{fill:none;stroke:var(--ember);stroke-width:1.1;opacity:.3;stroke-dasharray:1700;stroke-dashoffset:1700;animation:draw 3.2s .5s var(--ease) forwards;stroke-linecap:round}
-.sketch path:nth-child(2n){opacity:.18;animation-delay:.8s}
-.name{position:relative;z-index:1;font-family:var(--serif);font-weight:400;font-size:clamp(70px,12.4vw,198px);line-height:.86;letter-spacing:-.035em;white-space:nowrap}
-.name .mask{display:block;overflow:hidden;padding:.02em .04em .1em}
-.name .mask>span{display:inline-block;transform:translateY(108%);animation:rise 1.2s .15s var(--ease) forwards}
-.name.l{justify-self:end;text-align:right;margin-right:-.03em}
-.name.l small{text-align:left}
-.name.r{justify-self:start;margin-left:.06em;font-style:italic;color:var(--walnut)}
-.name.r .mask>span{animation-delay:.28s}
-.name.r small{text-align:right}
-.name .first{display:block;font-family:var(--sans);font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin:0 .5em 6px 0;font-style:normal}
-.name small{display:block;font-family:var(--sans);font-style:normal;font-size:13.5px;letter-spacing:0;line-height:1.55;color:var(--muted);margin-top:18px;padding:0 .5em;opacity:0;animation:fade .9s 1s forwards}
-
-.frame{position:relative;z-index:2;height:min(58vh,560px);min-height:380px;aspect-ratio:3/4}
-.frame::before{content:"";position:absolute;inset:16px -16px -16px 16px;border:1px solid var(--olive);border-radius:999px 999px 22px 22px;opacity:.55;z-index:-1}
-.arch{height:100%;border-radius:999px 999px 20px 20px;overflow:hidden;background:var(--paper-2);clip-path:inset(100% 0 0 0);animation:unveil 1.5s .1s var(--ease) forwards}
-@keyframes unveil{to{clip-path:inset(0 0 0 0)}}
-.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;transform:scale(1.12);animation:settle 2s .1s var(--ease) forwards}
+.portrait{position:relative;justify-self:end;width:100%;max-width:400px}
+.arch{aspect-ratio:3/4;border-radius:999px 999px 18px 18px;overflow:hidden;background:var(--paper-2);position:relative}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform:scale(1.08);animation:settle 1.6s var(--ease) forwards}
 @keyframes settle{to{transform:scale(1)}}
-
-.float{position:absolute;z-index:3;text-align:left;opacity:0;animation:fade 1s 1.2s var(--ease) forwards;transition:translate .5s var(--ease)}
-.float .cap{display:block;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--muted);margin-top:10px;white-space:nowrap}
-.clock{right:-25%;top:3%;width:clamp(112px,10.5vw,164px)}
-.clock .disc{position:relative;display:block;aspect-ratio:1}
-.clock img{width:100%;height:100%;border-radius:50%;box-shadow:0 22px 44px -14px rgba(40,25,10,.5);transition:transform .8s var(--ease)}
-.clock:hover img{transform:rotate(-12deg) scale(1.04)}
-.clock svg{position:absolute;inset:-22%;width:144%;height:144%;animation:spin 40s linear infinite;pointer-events:none}
-.clock .cap{display:none}
-.bee{left:-22%;bottom:7%;width:clamp(98px,8.6vw,136px)}
-.bee .ph{display:block;border:5px solid var(--paper);border-radius:14px;overflow:hidden;box-shadow:0 20px 40px -14px rgba(40,25,10,.5);transform:rotate(-7deg);transition:transform .6s var(--ease)}
-.bee:hover .ph{transform:rotate(0) scale(1.05)}
-.bee img{aspect-ratio:3/4;object-fit:cover;object-position:50% 58%}
-.bee .cap{padding-left:6px}
-
-/* hero foot */
-.hero-foot{display:grid;grid-template-columns:1.25fr auto 1fr;gap:40px;align-items:end;margin-top:clamp(30px,5.5vh,60px);opacity:0;animation:fade 1s 1.05s var(--ease) forwards}
-.statement{font-family:var(--serif);font-size:clamp(26px,2.5vw,38px);line-height:1.08;letter-spacing:-.01em;max-width:520px}
-.statement em{color:var(--walnut);position:relative;white-space:nowrap}
-.scribble{position:absolute;left:-6%;bottom:-.2em;width:112%;height:.4em;overflow:visible}
-.scribble path{fill:none;stroke:var(--ember);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:260;stroke-dashoffset:260;animation:draw 1.2s 1.9s var(--ease) forwards}
-.cta{display:flex;gap:10px}
-.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);border-radius:999px;padding:11px 20px;font-size:13.5px;font-weight:500;border:1px solid var(--ink);transition:background .3s,border-color .3s}
-.btn:hover{background:var(--walnut);border-color:var(--walnut)}
-.btn span{transition:transform .35s var(--ease)}
-.btn:hover span{transform:translateY(3px)}
-.meta-row{display:flex;gap:44px;justify-self:end}
-.meta{display:grid;gap:5px;font-size:13.5px}
-.meta b{font-weight:500}
+.badge{position:absolute;left:-54px;bottom:60px;width:128px;height:128px;border-radius:50%;background:var(--olive);color:var(--paper);display:grid;place-items:center}
+.badge svg{position:absolute;inset:0;animation:spin 22s linear infinite}
+.badge .star{font-family:var(--serif);font-size:34px;line-height:1;color:#E7D8A8}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chip-float{position:absolute;right:-26px;top:38%;width:116px;border-radius:14px;overflow:hidden;box-shadow:0 18px 40px -12px rgba(40,25,10,.45);transform:rotate(6deg);border:5px solid var(--paper);transition:transform .6s var(--ease)}
+.chip-float:hover{transform:rotate(0) scale(1.05)}
+.sign{position:absolute;right:6px;bottom:-30px;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--muted)}
 
 /* ---------- MARQUEE ---------- */
 .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:80px;overflow:hidden;white-space:nowrap;padding:22px 0}
@@ -249,28 +213,9 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
 .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
 
 /* ---------- RESPONSIVE ---------- */
-@media (max-width:1180px){
-  .clock{right:-16%}.bee{left:-14%}
-  .name small{display:none}
-}
-@media (max-width:860px){
-  .hero{padding-top:78px}
-  .vol{display:none}
-  .stage{grid-template-columns:1fr;justify-items:center;margin-top:26px}
-  .name{font-size:clamp(64px,21vw,150px)}
-  .name.l,.name.r{justify-self:center;text-align:center;margin:0}
-  .name.l{margin-bottom:-.08em}
-  .name.r{margin-top:-.02em}
-  .name .first{margin:0 0 8px;letter-spacing:.28em;font-size:11.5px}
-  .frame{height:auto;min-height:0;width:min(72vw,340px)}
-  .clock{right:-6%;top:-3%;width:min(23vw,108px)}
-  .bee{left:-8%;bottom:10%;width:min(22vw,100px)}
-  .float .cap{display:none}
-  .sketch{width:108vw}
-  .hero-foot{grid-template-columns:1fr;gap:22px;margin-top:34px}
-  .meta-row{justify-self:start;gap:36px}
-}
 @media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr}
+  .portrait{justify-self:center;max-width:340px;margin-top:20px}
   .works{gap:56px 0}
   .card,.card.w7,.card.w5{grid-column:span 12}
   .card.push{margin-top:0}
@@ -283,6 +228,8 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
 }
 @media (max-width:640px){
   .nav ul{display:none}
+  .badge{left:-10px;width:104px;height:104px;bottom:30px}
+  .chip-float{right:-6px;width:92px}
   .duo{grid-template-columns:1fr}
   .pend .media{height:auto;aspect-ratio:4/5}
   .card p.one{padding-left:0}
@@ -293,7 +240,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .name .mask>span,.arch img{transform:none}.arch{clip-path:none}.hero-top,.hero-foot,.float,.name small{opacity:1}.sketch path,.scribble path{stroke-dashoffset:0}.rv{opacity:1;transform:none}.in .bar i,.bar i{width:var(--v)}
+  h1 .line>span{transform:none}.rv{opacity:1;transform:none}.in .bar i,.bar i{width:var(--v)}
 }
 </style>
 </head>
@@ -316,56 +263,38 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
 <main id="top">
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap">
-    <h1 class="sr">Muhammed Rizwan Ismail — Home décor &amp; lifestyle accessory designer</h1>
-    <div class="hero-top">
+  <div class="wrap hero-grid">
+    <div>
       <div class="avail"><span class="dot"></span>Open to design internships · 2026</div>
-      <div class="vol"><span>Portfolio Vol. 01</span><i></i><span>Home Décor &amp; Lifestyle Accessory Design</span></div>
-    </div>
-
-    <div class="stage" id="stage">
-      <svg class="sketch" viewBox="0 0 800 560" aria-hidden="true">
-        <path d="M118 52 L684 48 L402 512 Z"/>
-        <path d="M126 58 L678 54 L398 506 Z"/>
-        <path d="M120 508 L680 512 L398 46 Z"/>
-        <path d="M128 502 L672 506 L404 54 Z"/>
-      </svg>
-
-      <div class="name l" aria-hidden="true">
-        <span class="first">Muhammed</span>
-        <span class="mask"><span>Rizwan</span></span>
-        <small>Furniture · Home décor<br>Lifestyle accessories</small>
-      </div>
-
-      <div class="frame">
-        <div class="arch"><img src="assets/img/portrait.jpg" alt="Portrait of Muhammed Rizwan Ismail"></div>
-        <button class="float clock" data-p="timekala" data-depth="16" aria-label="Open Timekala project">
-          <span class="disc">
-            <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/></defs>
-              <text font-family="Inter Tight" font-size="11.4" letter-spacing="4.2" fill="#5F5B2D"><textPath href="#ring">DESIGN · CRAFT · CULTURE · KERALA → KASHMIR ·</textPath></text></svg>
-            <img src="assets/img/timekala-round.webp" alt="">
-          </span>
-          <span class="cap">fig. 04 — Timekala</span>
-        </button>
-        <button class="float bee" data-p="pendants" data-depth="-12" aria-label="Open Brass Pendants project">
-          <span class="ph"><img src="assets/img/pendant-bee.jpg" alt=""></span>
-          <span class="cap">fig. 05 — Bumblebee, brass</span>
-        </button>
-      </div>
-
-      <div class="name r" aria-hidden="true">
-        <span class="mask"><span>Ismail</span></span>
-        <small>B.Des Accessory Design<br>NIFT Srinagar · ’28</small>
+      <h1>
+        <span class="line"><span>Thoughtful objects,</span></span>
+        <span class="line"><span>rooted in <span class="it">craft</span> &amp;</span></span>
+        <span class="line"><span>made for <span class="it">everyday</span>.</span></span>
+      </h1>
+      <div class="hero-sub">
+        <p>I’m <b>Muhammed Rizwan Ismail</b>. I design home décor, furniture and lifestyle accessories where materials, culture and function meet.</p>
+        <div class="meta">
+          <span class="label">Currently</span>
+          <span><b>B.Des Accessory Design</b></span>
+          <span>NIFT Srinagar · ’28</span>
+        </div>
+        <div class="meta">
+          <span class="label">From</span>
+          <span><b>Kozhikode, Kerala</b></span>
+          <span>India</span>
+        </div>
       </div>
     </div>
 
-    <div class="hero-foot">
-      <p class="statement">Thoughtful objects, rooted in <em>craft<svg class="scribble" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 13 C 46 5, 98 3, 140 9 S 186 16, 196 7"/></svg></em> &amp; made for <em>everyday</em>.</p>
-      <div class="cta"><a class="btn" href="#work">View work <span>↓</span></a><a class="pill" href="#about">About me</a></div>
-      <div class="meta-row">
-        <div class="meta"><span class="label">Based in</span><span><b>Kozhikode, Kerala</b></span></div>
-        <div class="meta"><span class="label">Studying</span><span><b>NIFT Srinagar</b></span></div>
+    <div class="portrait">
+      <div class="arch"><img src="assets/img/portrait.jpg" alt="Portrait of Muhammed Rizwan Ismail"></div>
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 128 128"><defs><path id="c" d="M64,64 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs>
+          <text font-family="Inter Tight" font-size="10.2" letter-spacing="3.1" fill="#F3ECE0"><textPath href="#c">DESIGN · CRAFT · CULTURE · KERALA → KASHMIR ·</textPath></text></svg>
+        <span class="star">✦</span>
       </div>
+      <div class="chip-float"><img src="assets/img/pendant-kingfisher.jpg" alt="Brass kingfisher pendant"></div>
+      <span class="sign">— designer, maker, sketcher</span>
     </div>
   </div>
 
@@ -629,16 +558,6 @@ addEventListener('keydown',e=>{ if(e.key==='Escape' && modal.classList.contains(
 // nav state
 const nav = document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
-
-// hero: gentle parallax on the floating objects (mouse only, respects reduced motion)
-const stage = document.getElementById('stage');
-if (matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches){
-  const floats = stage.querySelectorAll('[data-depth]');
-  stage.closest('.hero').addEventListener('pointermove', e=>{
-    const x = e.clientX/innerWidth - .5, y = e.clientY/innerHeight - .5;
-    floats.forEach(f=>{ const d = +f.dataset.depth; f.style.translate = `${x*d}px ${y*d}px`; });
-  });
-}
 
 // reveals
 const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.14,rootMargin:'0px 0px -6% 0px'});
